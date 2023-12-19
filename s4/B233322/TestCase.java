@@ -98,7 +98,7 @@ public class TestCase {
             System.out.println("test case 7: success!");
             assert freq == 0 : "test failed: space is \"Hi Ho Hi Ho\", target is \"Hi\", return value must be 2, but it is " + freq + ".";
         }
-        catch(ArrayIndexOufOfBoundsException e)
+        catch (Exception e)
         {
             System.out.println("test case 7: problem remain!");
         }

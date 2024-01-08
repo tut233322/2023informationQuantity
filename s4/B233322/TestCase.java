@@ -112,7 +112,7 @@ public class TestCase {
 	}
 	catch(Exception e) {
 	    System.out.println("Exception occurred in Frequencer Object");
-        e,printStackTrace();
+        e.printStackTrace();
 	    success = false;
 	}
 

@@ -44,6 +44,7 @@ public class TestCase {
 	    myObject.setTarget("H".getBytes());
 	    freq = myObject.frequency();
 	    assert freq == 4: "Hi Ho Hi Ho, H: " + freq;
+        System.out.println("ok");
         
 	    // Write your testCase here
         // Test case 1: target is not set

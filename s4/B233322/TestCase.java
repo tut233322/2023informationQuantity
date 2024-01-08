@@ -51,6 +51,7 @@ public class TestCase {
         myObject.setSpace("Hi Ho Hi Ho".getBytes());
         freq = myObject.frequency();
         assert freq == -1 : "test failed: when target not set, return value must be -1. but return value is " + freq + ".";
+        System.out.println("ok");
         
         // Test case 2: target length is zero
         myObject = new Frequencer();
@@ -58,12 +59,14 @@ public class TestCase {
         myObject.setTarget("".getBytes());
         freq = myObject.frequency();
         assert freq == -1 : "test failed: when target length is zero, return value must be -1. but return value is " + freq + ".";
+        System.out.println("ok");
         
         // Test case 3: space is not set
         myObject = new Frequencer();
         myObject.setTarget("H".getBytes());
         freq = myObject.frequency();
         assert freq == 0 : "test failed: when space is not set, return value must be 0. but return value is " + freq + ".";
+        System.out.println("ok");
         
         // Test case 4: space length is zero
         myObject = new Frequencer();
@@ -71,6 +74,7 @@ public class TestCase {
         myObject.setTarget("H".getBytes());
         freq = myObject.frequency();
         assert freq == 0 : "test failed: when space length is zero, return value must be 0. but return value is " + freq + ".";
+        System.out.println("ok");
         
         // Test case 5: valid case
         myObject = new Frequencer();
@@ -78,6 +82,7 @@ public class TestCase {
         myObject.setTarget("H".getBytes());
         freq = myObject.frequency();
         assert freq == 4 : "test failed: space is \"Hi Ho Hi Ho\", target is \"H\", return value must be 4, but it is " + freq + ".";
+        System.out.println("ok");
         
         // Test case 6: valid case
         myObject = new Frequencer();
@@ -85,6 +90,7 @@ public class TestCase {
         myObject.setTarget("X".getBytes());
         freq = myObject.frequency();
         assert freq == 0 : "test failed: space is \"Hi Ho Hi Ho\", target is \"X\", return value must be 0, but it is " + freq + ".";
+        System.out.println("ok");
         
 
         //detect the problem(week2 - step6)

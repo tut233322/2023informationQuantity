@@ -96,7 +96,7 @@ public class TestCase {
             myObject.setTarget("Hi".getBytes());
             freq = myObject.frequency();
             System.out.println("test case 7: success!");
-            assert freq == 0 : "test failed: space is \"Hi Ho Hi Ho\", target is \"Hi\", return value must be 2, but it is " + freq + ".";
+            assert freq == 2 : "test failed: space is \"Hi Ho Hi Ho\", target is \"Hi\", return value must be 2, but it is " + freq + ".";
         }
         catch (Exception e)
         {

@@ -101,10 +101,12 @@ public class TestCase {
         catch (Exception e)
         {
             System.out.println("test case 7: problem remain!");
+        e.printStackTrace();
         }
 	}
 	catch(Exception e) {
 	    System.out.println("Exception occurred in Frequencer Object");
+        e.printStackTrace();
 	    success = false;
 	}
 
@@ -129,6 +131,7 @@ public class TestCase {
 	}
 	catch(Exception e) {
 	    System.out.println("Exception occurred in InformationEstimator Object");
+        e.printStackTrace();
 	    success = false;
 	}
         if(success) { System.out.println("TestCase OK"); } 

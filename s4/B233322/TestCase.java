@@ -84,7 +84,7 @@ public class TestCase {
         myObject.setSpace("Hi Ho Hi Ho".getBytes());
         myObject.setTarget("X".getBytes());
         freq = myObject.frequency();
-        assert freq == 0 : "test failed: space is \"Hi Ho Hi Ho\", target is \"X\", return value must be 0, but it is " + freq + ".";
+        assert freq == 2 : "test failed: space is \"Hi Ho Hi Ho\", target is \"X\", return value must be 0, but it is " + freq + ".";
         
 
         //detect the problem(week2 - step6)

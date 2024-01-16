@@ -111,6 +111,19 @@ public class Frequencer implements FrequencerInterface{
         //   suffixArray[ 1]= 1:BA
         //   suffixArray[ 2]= 0:CBA
         // のようになるべきである。
+	//bubble sort
+	for (int i=0; i < space.length; ++i)
+	{
+	    for (int j=i+1; j < space.length; ++j)
+	    {
+		if (suffixCompare(suffixArray[i], suffixArray[j]) == 1)
+		{
+		    int temp = suffixArray[i];
+		    suffixArray[i] = suffixArray[j];
+		    suffixArray[j] = temp;
+		}
+	    }
+	}
     }
 
     // ここから始まり、指定する範囲までは変更してはならないコードである。

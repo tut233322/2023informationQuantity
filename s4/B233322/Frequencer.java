@@ -65,7 +65,10 @@ public class Frequencer implements FrequencerInterface {
 
     @Override
     public int subByteFrequency(int start, int end) {
-	/* I don't know how behave when null or length is zero */
+	/*  I don't know how behave when null or length is zero (cause not indicated)
+ 	    maybe these (like frequency)?
+	if (this.myTarget == null || this.myTarget.length == 0) { return -1; }
+	if (this.mySpace == null || this.mySpace.length == 0) { return 0; }  */
         return this.frequencyImpl(start, end);
     }
 

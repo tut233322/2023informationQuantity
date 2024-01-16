@@ -199,8 +199,15 @@ public class Frequencer implements FrequencerInterface{
         //            suffixCompare should return 1. (It was written -1 before 2021/12/21)
         //
         // ここに比較のコードを書け 
-        //
-        return 0; // この行は変更しなければならない。
+        int spaceLength = this.mySpace.length;
+	if (i >= spaceLength || j > k || k >= spaceLength) { throw IllegalArgumentException(); }
+	
+	for (int m=0; m < k-j; ++m)
+	{
+	    if (this.mySpace[i+m] > this.myTarget[j+m]) { return 1; }
+	    if (this.mySpace[i+m] < this.myTarget[j+m]) { return -1; }
+	}
+        return 0;
     }
 
 

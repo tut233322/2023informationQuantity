@@ -39,32 +39,34 @@ public class Frequencer implements FrequencerInterface {
 	System.out.write(' ');
     }
 
-    @Override
-    public int frequency() {
-        return subByteFrequency(0, myTarget.length);
-    }
-
-    @Override
-    public int subByteFrequency(int start, int end) {
-	if (this.myTarget == null) { return -1; }
-	if (this.mySpace == null) { return 0; }
-		
-        int targetLength = myTarget.length;
-	if (targetLength == 0) { return -1; }
-        int spaceLength = mySpace.length;
-	if (spaceLength == 0) { return 0; }
+    private int frequencyImpl(int targetStart, int targetEnd) {
+        int targetLength = this.myTarget.length;
+        int spaceLength = this.mySpace.length;
 	
         int count = 0;
 	if(debugMode) { showVariables(); }
         for(int j = 0; j + targetLength - 1 < spaceLength; j++) { // Is it OK?
             boolean abort = false;
-            for(int i = start; i < end; i++) {
-                if(myTarget[i] != mySpace[j+(i-start)]) { abort = true; break; }
+            for(int i = targetStart; i < targetEnd; i++) {
+                if(this.myTarget[i] != this.mySpace[j+(i-targetStart)]) { abort = true; break; }
             }
             if(abort == false) { count++; }
         }
 	if(debugMode) { System.out.printf("%10d\n", count); }
-        return count;
+	return count;
+    }
+    
+    @Override
+    public int frequency() {
+	if (this.myTarget == null || this.myTarget.length == 0) { return -1; }
+	if (this.mySpace == null || this.mySpace.length == 0) { return 0; }
+        return frequencyImpl(0, myTarget.length);
+    }
+
+    @Override
+    public int subByteFrequency(int start, int end) {
+	/* I don't know how behave when null or length is zero */
+        return this.frequencyImpl(start, end);
     }
 
     public static void main(String[] args) {

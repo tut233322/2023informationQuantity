@@ -73,7 +73,7 @@ public class Frequencer implements FrequencerInterface{
 	if (i == j) { return 0; }
 	
         int spaceLength = mySpace.length;
-	if (i >= spaceLength || j >= spaceLength) { throw IllegalArgumentException(); }
+	if (i >= spaceLength || j >= spaceLength) { throw new IllegalArgumentException(); }
 	
 	while (true)
 	{
@@ -200,7 +200,7 @@ public class Frequencer implements FrequencerInterface{
         //
         // ここに比較のコードを書け 
         int spaceLength = this.mySpace.length;
-	if (i >= spaceLength || j > k || k >= spaceLength) { throw IllegalArgumentException(); }
+	if (i >= spaceLength || j > k || k >= spaceLength) { throw new IllegalArgumentException(); }
 	
 	for (int m=0; m < k-j; ++m)
 	{

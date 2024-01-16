@@ -41,6 +41,11 @@ public class Frequencer implements FrequencerInterface {
 
     @Override
     public int frequency() {
+        return subByteFrequency(0, myTarget.length);
+    }
+
+    @Override
+    public int subByteFrequency(int start, int end) {
 	if (this.myTarget == null) { return -1; }
 	if (this.mySpace == null) { return 0; }
 		
@@ -51,23 +56,15 @@ public class Frequencer implements FrequencerInterface {
 	
         int count = 0;
 	if(debugMode) { showVariables(); }
-        for(int start = 0; start + targetLength - 1 < spaceLength; start++) { // Is it OK?
+        for(int j = 0; j + targetLength - 1 < spaceLength; j++) { // Is it OK?
             boolean abort = false;
-            for(int i = 0; i<targetLength; i++) {
-                if(myTarget[i] != mySpace[start+i]) { abort = true; break; }
+            for(int i = start; i < end; i++) {
+                if(myTarget[i] != mySpace[j+(i-start)]) { abort = true; break; }
             }
             if(abort == false) { count++; }
         }
 	if(debugMode) { System.out.printf("%10d\n", count); }
         return count;
-    }
-
-    @Override
-    public int subByteFrequency(int start, int end) {
-	Frequencer freq = new Frequencer();
-	freq.setSpace(this.mySpace);
-	freq.setTarget(Arrays.copyOfRange(this.myTarget, start, end));
-	return freq.frequency();
     }
 
     public static void main(String[] args) {

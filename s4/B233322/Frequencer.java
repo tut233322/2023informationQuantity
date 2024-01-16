@@ -1,4 +1,4 @@
-package s4.umemura;  // ここは、かならず、自分の名前に変えよ。
+package s4.B233322;
 import java.lang.*;
 import s4.specification.*;
 
@@ -70,9 +70,20 @@ public class Frequencer implements FrequencerInterface{
         // if suffix_i < suffix_j, it returns -1  
         // if suffix_i = suffix_j, it returns 0;   
 
-        // ここにコードを記述せよ 
-        //                                          
-        return 0; // この行は変更しなければいけない。 
+	if (i == j) { return 0; }
+	
+        int spaceLength = mySpace.length;
+	if (i >= spaceLength || j >= spaceLength) { throw IllegalArgumentException(); }
+	
+	while (true)
+	{
+	    if (this.mySpace[i] > this.mySpace[j]) { return 1; }
+	    if (this.mySpace[i] < this.mySpace[j]) { return -1; }
+	    
+	    ++i; ++j;
+	    if (i >= spaceLength) { return -1; }
+	    if (j >= spaceLength) { return 1; }
+	}
     }
 
     public void setSpace(byte []space) { 

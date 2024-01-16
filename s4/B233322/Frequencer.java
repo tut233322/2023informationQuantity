@@ -242,7 +242,7 @@ public class Frequencer implements FrequencerInterface{
         // ここにコードを記述せよ。                                                 
 	for (int i=0; i < this.mySpace.length; ++i)
 	{
-            if (targetCompare(i, start, end) >= 0) { return i; }
+            if (targetCompare(this.suffixArray[i], start, end) >= 0) { return i; }
 	}
         return suffixArray.length;
     }
@@ -277,7 +277,7 @@ public class Frequencer implements FrequencerInterface{
         //　ここにコードを記述せよ                                           
         for (int i=0; i < this.mySpace.length; ++i)
 	{
-            if (targetCompare(i, start, end) > 0) { return i; }
+            if (targetCompare(this.suffixArray[i], start, end) > 0) { return i; }
 	}
         return suffixArray.length;
     }

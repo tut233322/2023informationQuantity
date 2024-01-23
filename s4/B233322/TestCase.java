@@ -40,8 +40,8 @@ public class TestCase {
         slowObject.setSpace(space.getBytes());
         myObject.setTarget(target.getBytes());
         slowObject.setTarget(target.getBytes());
-	int freq = myObject.frequency();
 	int correct_freq = slowObject.frequency();
+	int freq = myObject.frequency();
 	assert correct_freq == freq : "frequencer test failed: space is " + space + ", target is " + target + ", so return value must be " + correct_freq + ", but it was " + freq + ".";
     }
 

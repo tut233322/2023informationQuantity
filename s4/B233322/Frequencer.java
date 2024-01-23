@@ -99,7 +99,7 @@ public class Frequencer implements FrequencerInterface{
 	swapSuffixArray(left, rand.nextInt(right - left) + left);
 	
 	int i=left;
-	for (j = left + 1; j < right; ++j)
+	for (int j = left + 1; j < right; ++j)
 	{
 	    if (suffixCompare(this.suffixArray[j], this.suffixArray[left]) == -1)
 	    {
@@ -155,7 +155,7 @@ public class Frequencer implements FrequencerInterface{
 	}
  	*/
 	rand = new Random();
-	quickSort(0, this.mySpace.length);
+	quickSortSuffixArray(0, this.mySpace.length);
     }
 
     // ここから始まり、指定する範囲までは変更してはならないコードである。

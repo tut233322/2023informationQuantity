@@ -94,6 +94,10 @@ public class TestCase {
             frequencer_valid_case_test("aaaaaaaaaa", "a");
             frequencer_valid_case_test("aaaaaaaaaa", "aa");
             frequencer_valid_case_test("aaaaaaaaaa", "aaa");
+            frequencer_valid_case_test("As", "H");
+            frequencer_valid_case_test("Zip", "H");
+            frequencer_valid_case_test("A", "Hi");
+            frequencer_valid_case_test("Z", "Hi");
 	}
 	catch(Exception e) {
 	    System.out.println("Exception occurred in Frequencer Object");

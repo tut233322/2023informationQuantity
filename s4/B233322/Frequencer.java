@@ -203,8 +203,15 @@ public class Frequencer implements FrequencerInterface{
 	
 	for (int m=0; m < k-j; ++m)
 	{
+	    // それまでの文字が一致していてmySpaceの末尾を超えたところを照合しようとしたなら suffix_i < target_j_k である
+	    if (i+m >= this.mySpace.length) { return -1; }
+
+	    // 文字が一致しなければ
 	    if (this.mySpace[i+m] > this.myTarget[j+m]) { return 1; }
 	    if (this.mySpace[i+m] < this.myTarget[j+m]) { return -1; }
+
+	    // 文字が一致していれば
+	    //continue;
 	}
         return 0;
     }

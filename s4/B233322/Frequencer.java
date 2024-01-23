@@ -154,6 +154,9 @@ public class Frequencer implements FrequencerInterface{
 	    }
 	}
  	*/
+	
+	if (this.mySpace.length < 2) { return; }
+	
 	rand = new Random();
 	quickSortSuffixArray(0, this.mySpace.length);
     }

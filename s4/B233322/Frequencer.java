@@ -1,5 +1,6 @@
 package s4.B233322;
 import java.lang.*;
+import java.util.Random;
 import s4.specification.*;
 
 
@@ -28,6 +29,7 @@ public class Frequencer implements FrequencerInterface{
 
     int []  suffixArray; // Suffix Arrayの実装に使うデータの型をint []とせよ。
 
+    Random rand;
 
     // The variable, "suffixArray" is the sorted array of all suffixes of mySpace.                                    
     // Each suffix is expressed by a integer, which is the starting position in mySpace. 
@@ -86,6 +88,32 @@ public class Frequencer implements FrequencerInterface{
 	}
     }
 
+    private void swapSuffixArray(int index1, int index2) {
+	int temp = this.suffixArray[index1];
+	this.suffixArray[index1] = this.suffixArray[index2];
+	this.suffixArray[index2] = temp;
+    }
+	
+    private void quickSortSuffixArray(int left, int right) {
+	//pivotを一番左に持ってくる
+	swapSuffixArray(left, rand.nextInt(right - left) + left);
+	
+	int i=left;
+	for (j = left + 1; j < right; ++j)
+	{
+	    if (suffixCompare(this.suffixArray[j], this.suffixArray[left]) == -1)
+	    {
+		++i;
+		swapSuffixArray(i, j);
+	    }
+	}
+	swapSuffixArray(left, i);
+	if (i - left > 1) { quickSortSuffixArray(left, i); }
+	if (right - i > 1) { quickSortSuffixArray(i, right); }
+	
+	//proposition: 長さが十分に小さくなったらバブルソートとかの事前事後コストが低いソートを使うようにするともっと早くなるかも
+    }
+    
     public void setSpace(byte []space) { 
         // suffixArrayの前処理は、setSpaceで定義せよ。
         mySpace = space; if(mySpace.length>0) spaceReady = true;
@@ -111,6 +139,7 @@ public class Frequencer implements FrequencerInterface{
         //   suffixArray[ 1]= 1:BA
         //   suffixArray[ 2]= 0:CBA
         // のようになるべきである。
+	/*
 	//bubble sort
 	for (int i=0; i < space.length; ++i)
 	{
@@ -124,6 +153,9 @@ public class Frequencer implements FrequencerInterface{
 		}
 	    }
 	}
+ 	*/
+	rand = new Random();
+	quickSort(0, this.mySpace.length);
     }
 
     // ここから始まり、指定する範囲までは変更してはならないコードである。

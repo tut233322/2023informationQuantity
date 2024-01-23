@@ -1,7 +1,7 @@
 package s4.B233322; // Please modify to s4.Bnnnnnn, where nnnnnn is your student ID. 
 import java.lang.*;
 import s4.specification.*;
-import s4.slow.*
+import s4.slow.*;
 
 /*
 interface FrequencerInterface {     // This interface provides the design for frequency counter.

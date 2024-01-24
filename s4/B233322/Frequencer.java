@@ -280,12 +280,26 @@ public class Frequencer implements FrequencerInterface{
         // Assuming the suffix array is created from "Hi Ho Hi Ho",                 
         // if target_start_end is "Ho ", it will return 6.                
         //                                                                          
-        // ここにコードを記述せよ。                                                 
+        // ここにコードを記述せよ。        
+	/*
 	for (int i=0; i < this.mySpace.length; ++i)
 	{
             if (targetCompare(this.suffixArray[i], start, end) >= 0) { return i; }
 	}
         return suffixArray.length;
+	*/
+
+	int left = 0;
+	int right = this.mySpace.length;
+	int half;
+	while (true)
+	{
+	    if (right - left == 1) { break; }
+	    half = (left + right) / 2;
+	    if (targetCompare(this.suffixArray[half], start, end) < 0) { right = half; }
+	    else { left = half; }
+	}
+	return (targetCompare(this.suffixArray[left], start, end) < 0) ? left+1 : left;
     }
 
     private int subByteEndIndex(int start, int end) {

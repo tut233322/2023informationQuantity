@@ -296,8 +296,8 @@ public class Frequencer implements FrequencerInterface{
 	{
 	    if (right - left == 1) { break; }
 	    half = (left + right) / 2;
-	    if (targetCompare(this.suffixArray[half], start, end) < 0) { right = half; }
-	    else { left = half; }
+	    if (targetCompare(this.suffixArray[half], start, end) < 0) { left = half; }
+	    else { right = half; }
 	}
 	return (targetCompare(this.suffixArray[left], start, end) < 0) ? left+1 : left;
     }

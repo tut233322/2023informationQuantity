@@ -84,6 +84,7 @@ public class InformationEstimator implements InformationEstimatorInterface {
 		values[i][i+gap-1] = ((f_result < value) ? f_result : value);
 	    }
 	}
+	if(debugMode) { System.out.printf("%10.5f\n", value); }
         return (values[0][myTarget.length-1] == Double.POSITIVE_INFINITY) ? Double.MAX_VALUE : values[0][myTarget.length-1];
     }
 

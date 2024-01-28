@@ -45,13 +45,16 @@ public class InformationEstimator implements InformationEstimatorInterface {
 
     @Override
     public void setTarget(byte[] target) {
+        if (myFrequencer == null) { myFrequencer = new Frequencer(); }
         myTarget = target;
+	myFrequencer.setTarget(target);
     }
 
     @Override
     public void setSpace(byte[] space) {
-        myFrequencer = new Frequencer();
-        mySpace = space; myFrequencer.setSpace(space);
+        if (myFrequencer == null) { myFrequencer = new Frequencer(); }
+        mySpace = space;
+	myFrequencer.setSpace(space);
     }
 
     @Override

@@ -69,8 +69,8 @@ public class InformationEstimator implements InformationEstimatorInterface {
 	if(debugMode) { showVariables(); }
         if(debugMode) { System.out.printf("np=%d length=%d ", np, +myTarget.length); }
 
-	double [][] values = new double[myTarget.length][myTarget.length];  //first subs for start/begin(), second subs for end()
-	for (int gap=1; gap < myTarget.length; ++gap)
+	double [][] values = new double[myTarget.length][myTarget.length];  //first subs for start/begin(), second subs for end()-1
+	for (int gap=1; gap <= myTarget.length; ++gap)
 	{
 	    for (int i=0; i+gap <= myTarget.length; ++i)
 	    {

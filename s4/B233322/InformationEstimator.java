@@ -62,12 +62,10 @@ public class InformationEstimator implements InformationEstimatorInterface {
 	if (this.myTarget == null || this.myTarget.length == 0) { return 0.0; }
 	if (this.mySpace == null || this.mySpace.length == 0) { return Double.MAX_VALUE; }
 	
-        boolean [] partition = new boolean[myTarget.length+1];
-        int np = 1<<(myTarget.length-1);
-        double value = Double.MAX_VALUE; // value = mininimum of each "value1".
+        double value;
 	double f_result;
 	if(debugMode) { showVariables(); }
-        if(debugMode) { System.out.printf("np=%d length=%d ", np, +myTarget.length); }
+        if(debugMode) { System.out.printf("length=%d ", +myTarget.length); }
 
 	double [][] values = new double[myTarget.length][myTarget.length];  //first subs for start/begin(), second subs for end()-1
 	for (int gap=1; gap <= myTarget.length; ++gap)

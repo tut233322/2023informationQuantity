@@ -74,7 +74,7 @@ public class InformationEstimator implements InformationEstimatorInterface {
 		value = Double.MAX_VALUE;
 		for (int j=i+1; j < i+gap; ++j)  //j is for divide pos
 		{
-		    f_result = valeus[i][j-1] + values[j][i+gap-1];
+		    f_result = values[i][j-1] + values[j][i+gap-1];
 		    value = ((f_result < value) ? f_result : value);
 		}
 		f_result = f(myFrequencer.subByteFrequency(i, i+gap));

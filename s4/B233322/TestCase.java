@@ -45,14 +45,14 @@ public class TestCase {
 	assert correct_freq == freq : "frequencer test failed: space is " + space + ", target is " + target + ", so return value must be " + correct_freq + ", but it was " + freq + ".";
     }
     private static void estimator_valid_case_test(String space, String target) {
+	s4.slow.InformationEstimator slowObject = new s4.slow.InformationEstimator();
 	InformationEstimator myObject = new s4.B233322.InformationEstimator();
-	InformationEstimator slowObject = new s4.slow.InformationEstimator();
-        myObject.setSpace(space.getBytes());
         slowObject.setSpace(space.getBytes());
-        myObject.setTarget(target.getBytes());
+        myObject.setSpace(space.getBytes());
         slowObject.setTarget(target.getBytes());
-	int correct_esti = slowObject.estimation();
-	int esti = myObject.estimation();
+        myObject.setTarget(target.getBytes());
+	double correct_esti = slowObject.estimation();
+	double esti = myObject.estimation();
 	assert Math.abs(correct_esti - esti) < 0.0001 : "estimator test failed: space is " + space + ", target is " + target + ", so return value must be " + correct_esti + ", but it was " + esti + ".";
     }
 

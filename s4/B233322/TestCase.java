@@ -44,6 +44,17 @@ public class TestCase {
 	int freq = myObject.frequency();
 	assert correct_freq == freq : "frequencer test failed: space is " + space + ", target is " + target + ", so return value must be " + correct_freq + ", but it was " + freq + ".";
     }
+    private static void estimator_valid_case_test(String space, String target) {
+	InformationEstimator myObject = new s4.B233322.InformationEstimator();
+	InformationEstimator slowObject = new s4.slow.InformationEstimator();
+        myObject.setSpace(space.getBytes());
+        slowObject.setSpace(space.getBytes());
+        myObject.setTarget(target.getBytes());
+        slowObject.setTarget(target.getBytes());
+	int correct_esti = slowObject.estimation();
+	int esti = myObject.estimation();
+	assert Math.abs(correct_esti - esti) < 0.0001 : "estimator test failed: space is " + space + ", target is " + target + ", so return value must be " + correct_esti + ", but it was " + esti + ".";
+    }
 
     public static void main(String[] args) {
 	try {
@@ -147,31 +158,10 @@ public class TestCase {
 	    
 	    // Test case 6: valid case
             myObject = new InformationEstimator();
-	    myObject.setSpace("3210321001230123".getBytes());
-	    myObject.setTarget("0".getBytes());
-            value = myObject.estimation();
-            assert (value > 1.9999) && (2.0001 > value) : "test failed: space is 3210321001230123, target is 0, return value must be 2.0. but return value is " + value + ".";
-	    
-	    // Test case 7: valid case
-            myObject = new InformationEstimator();
-	    myObject.setSpace("3210321001230123".getBytes());
-	    myObject.setTarget("01".getBytes());
-            value = myObject.estimation();
-            assert (value > 2.9999) && (3.0001 > value) : "test failed: space is 3210321001230123, target is 01, return value must be 3.0. but return value is " + value + ".";
-	    
-	    // Test case 8: valid case
-            myObject = new InformationEstimator();
-	    myObject.setSpace("3210321001230123".getBytes());
-	    myObject.setTarget("0123".getBytes());
-            value = myObject.estimation();
-            assert (value > 2.9999) && (3.0001 > value) : "test failed: space is 3210321001230123, target is 0123, return value must be 3.0. but return value is " + value + ".";
-	    
-	    // Test case 9: valid case
-            myObject = new InformationEstimator();
-	    myObject.setSpace("3210321001230123".getBytes());
-	    myObject.setTarget("00".getBytes());
-            value = myObject.estimation();
-            assert (value > 3.9999) && (4.0001 > value) : "test failed: space is 3210321001230123, target is 00, return value must be 4.0. but return value is " + value + ".";
+	    estimator_valid_case_test("3210321001230123", "0");
+	    estimator_valid_case_test("3210321001230123", "01");
+	    estimator_valid_case_test("3210321001230123", "0123");
+	    estimator_valid_case_test("3210321001230123", "00");
 	}
 	catch(Exception e) {
 	    System.out.println("Exception occurred in InformationEstimator Object");

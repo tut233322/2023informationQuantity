@@ -53,6 +53,8 @@ public class Frequencer implements FrequencerInterface{
         }
     }
 
+    //mySpaceのsuffixについて、suffix_iとsuffix_jを比較 iおよびjはsuffix文字列の開始位置
+    //戻り値はi==jなら0、i>jなら1、i<jなら-1 
     private int suffixCompare(int i, int j) {
         // suffixCompareはソートのための比較メソッドである。
         // 次のように定義せよ。
@@ -72,32 +74,45 @@ public class Frequencer implements FrequencerInterface{
         // if suffix_i < suffix_j, it returns -1  
         // if suffix_i = suffix_j, it returns 0;   
 
+	//return 0 iff. i=j  (suffix arrayの定義より)
 	if (i == j) { return 0; }
 	
         int spaceLength = mySpace.length;
+
+        //無効な引数への対処
 	if (i >= spaceLength || j >= spaceLength) { throw new IllegalArgumentException(); }
 	
 	while (true)
 	{
+	    //suffix_i[k]とsuffix_j[k]を比較（kはループごとに増えていく仮想変数とする）
+	    // suffix_i[k] > suffix_j[k]ならsuffix_i > suffix_j
 	    if (this.mySpace[i] > this.mySpace[j]) { return 1; }
+	    // suffix_i[k] < suffix_j[k]ならsuffix_i < suffix_j
 	    if (this.mySpace[i] < this.mySpace[j]) { return -1; }
-	    
+
+	    //1文字進める
 	    ++i; ++j;
+	    
+	    //suffix_iの末尾に達したらsuffix_i < suffix_j
 	    if (i >= spaceLength) { return -1; }
+	    //suffix_jの末尾に達したらsuffix_i > suffix_j
 	    if (j >= spaceLength) { return 1; }
 	}
     }
 
+    //this.suffixArray[index]とthis.suffixArray[index2]をswapする
     private void swapSuffixArray(int index1, int index2) {
 	int temp = this.suffixArray[index1];
 	this.suffixArray[index1] = this.suffixArray[index2];
 	this.suffixArray[index2] = temp;
     }
-	
+
+    //suffixArray[left:right]についてクイックソートを行う leftはソート対象となる最初の要素の添字 rightはソート対象となる最後の要素の次の要素の添字
     private void quickSortSuffixArray(int left, int right) {
 	//pivotを一番左に持ってくる
 	swapSuffixArray(left, rand.nextInt(right - left) + left);
 	
+	//配列の左側にpivotより小さいものを、右側にpivotより大きいものを置く
 	int i=left;
 	for (int j = left + 1; j < right; ++j)
 	{
@@ -107,7 +122,16 @@ public class Frequencer implements FrequencerInterface{
 		swapSuffixArray(i, j);
 	    }
 	}
+	//pivotより小さいものとpivotより大きいものの中間の位置にpivotを置く
 	swapSuffixArray(left, i);
+	
+	//同一の値が存在しない配列かつpivotはランダム
+	//  -> 常に0:nの分割となるようなことにはならない
+	//    -> 分割を繰り返せばいずれ一度の分割対象となる要素の数は1になる
+	//      -> 必ず停止する
+	//  -> 常に1:n-1の分割となるようなことにはならない
+	//    -> (n^2)時間かかるような可能性は、配列によらず極めて小さい
+	
 	if (i - left > 1) { quickSortSuffixArray(left, i); }
 	if (right - i > 1) { quickSortSuffixArray(i, right); }
 	
@@ -139,24 +163,11 @@ public class Frequencer implements FrequencerInterface{
         //   suffixArray[ 1]= 1:BA
         //   suffixArray[ 2]= 0:CBA
         // のようになるべきである。
-	/*
-	//bubble sort
-	for (int i=0; i < space.length; ++i)
-	{
-	    for (int j=i+1; j < space.length; ++j)
-	    {
-		if (suffixCompare(suffixArray[i], suffixArray[j]) == 1)
-		{
-		    int temp = suffixArray[i];
-		    suffixArray[i] = suffixArray[j];
-		    suffixArray[j] = temp;
-		}
-	    }
-	}
- 	*/
 	
+	//lenfthが1以下ならソートの必要無し
 	if (this.mySpace.length < 2) { return; }
-	
+
+	//クイックソート
 	rand = new Random();
 	quickSortSuffixArray(0, this.mySpace.length);
     }
@@ -292,6 +303,10 @@ public class Frequencer implements FrequencerInterface{
 	int left = 0;
 	int right = this.mySpace.length;
 	int half;
+
+	//一度の実行毎にright-leftは半分になるので 必ず停止する
+
+	//
 	while (true)
 	{
 	    if (right - left == 1) { break; }

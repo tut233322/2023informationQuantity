@@ -178,7 +178,7 @@ public class TestCase {
 	    String a_10000 = "";
 	    for (int i=0; i < 100; ++i) { a_10000 = a_10000 + a_100; }
 	    String a_20000 = "";
-	    for (int i=0; i < 100; ++i) { a_20000 = a_20000 + a_100; }
+	    for (int i=0; i < 200; ++i) { a_20000 = a_20000 + a_100; }
 	    
 	    start_time = System.nanoTime();
             myObject = new InformationEstimator();

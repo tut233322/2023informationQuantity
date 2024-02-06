@@ -94,7 +94,24 @@ public class Frequencer implements FrequencerInterface{
 	this.suffixArray[index2] = temp;
     }
 	
+    //n^2の素朴なソート (left-right)が小さいとき用
+    private void simpleSortSuffixArray(int left, int right) {
+	for (int i=0; i < space.length; ++i)
+	{
+	    for (int j=i+1; j < space.length; ++j)
+	    {
+		if (suffixCompare(suffixArray[i], suffixArray[j]) == 1)
+		{
+		    int temp = suffixArray[i];
+		    suffixArray[i] = suffixArray[j];
+		    suffixArray[j] = temp;
+		}
+	    }
+	}
+    }
+	    
     private void quickSortSuffixArray(int left, int right) {
+	if (right-left <= 2) { simpleSortSuffixArray(left, right); return; }
 	//pivotを一番左に持ってくる
 	swapSuffixArray(left, rand.nextInt(right - left) + left);
 	

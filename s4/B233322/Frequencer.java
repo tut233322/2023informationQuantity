@@ -96,15 +96,13 @@ public class Frequencer implements FrequencerInterface{
 	
     //n^2の素朴なソート (left-right)が小さいとき用
     private void simpleSortSuffixArray(int left, int right) {
-	for (int i=0; i < space.length; ++i)
+	for (int i=left; i < right; ++i)
 	{
-	    for (int j=i+1; j < space.length; ++j)
+	    for (int j=left+1; j < right; ++j)
 	    {
 		if (suffixCompare(suffixArray[i], suffixArray[j]) == 1)
 		{
-		    int temp = suffixArray[i];
-		    suffixArray[i] = suffixArray[j];
-		    suffixArray[j] = temp;
+		    swapSuffixArray(i, j);
 		}
 	    }
 	}

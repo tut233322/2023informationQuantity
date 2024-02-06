@@ -170,7 +170,8 @@ public class TestCase {
 
 	    long start_time = System.nanoTime();
             myObject = new InformationEstimator();
-	    myObject.setTarget(random_stuff500);
+            myObject.setSpace(random_stuff500.getBytes());
+	    myObject.setTarget("fasfssssppppbbbb".getBytes());
             value = myObject.estimation();
 	    long end_time = System.nanoTime();
 	    System.out.println("time take: " + ((end_time - start_time) / 1000000.0) + "[ms]");

@@ -189,7 +189,7 @@ public class TestCase {
 	    
 	    start_time = System.nanoTime();
             myObject = new InformationEstimator();
-            myObject.setSpace(random_stuff10k.getBytes());
+            myObject.setSpace(random_stuff100k.getBytes());
 	    myObject.setTarget("fasfssssppppbbbb".getBytes());
             value = myObject.estimation();
 	    end_time = System.nanoTime();
@@ -197,7 +197,7 @@ public class TestCase {
 	    
 	    start_time = System.nanoTime();
             myObject = new InformationEstimator();
-            myObject.setSpace(a_10k.getBytes());
+            myObject.setSpace(a_100k.getBytes());
 	    myObject.setTarget("fasfssssppppbbbb".getBytes());
             value = myObject.estimation();
 	    end_time = System.nanoTime();

@@ -44,6 +44,17 @@ public class TestCase {
 	int freq = myObject.frequency();
 	assert correct_freq == freq : "frequencer test failed: space is " + space + ", target is " + target + ", so return value must be " + correct_freq + ", but it was " + freq + ".";
     }
+    private static void estimator_valid_case_test(String space, String target) {
+	s4.slow.InformationEstimator slowObject = new s4.slow.InformationEstimator();
+	InformationEstimator myObject = new s4.B233322.InformationEstimator();
+        slowObject.setSpace(space.getBytes());
+        myObject.setSpace(space.getBytes());
+        slowObject.setTarget(target.getBytes());
+        myObject.setTarget(target.getBytes());
+	double correct_esti = slowObject.estimation();
+	double esti = myObject.estimation();
+	assert Math.abs(correct_esti - esti) < 0.0001 : "estimator test failed: space is " + space + ", target is " + target + ", so return value must be " + correct_esti + ", but it was " + esti + ".";
+    }
 
     public static void main(String[] args) {
 	try {
@@ -147,31 +158,22 @@ public class TestCase {
 	    
 	    // Test case 6: valid case
             myObject = new InformationEstimator();
-	    myObject.setSpace("3210321001230123".getBytes());
-	    myObject.setTarget("0".getBytes());
-            value = myObject.estimation();
-            assert (value > 1.9999) && (2.0001 > value) : "test failed: space is 3210321001230123, target is 0, return value must be 2.0. but return value is " + value + ".";
-	    
-	    // Test case 7: valid case
-            myObject = new InformationEstimator();
-	    myObject.setSpace("3210321001230123".getBytes());
-	    myObject.setTarget("01".getBytes());
-            value = myObject.estimation();
-            assert (value > 2.9999) && (3.0001 > value) : "test failed: space is 3210321001230123, target is 01, return value must be 3.0. but return value is " + value + ".";
-	    
-	    // Test case 8: valid case
-            myObject = new InformationEstimator();
-	    myObject.setSpace("3210321001230123".getBytes());
-	    myObject.setTarget("0123".getBytes());
-            value = myObject.estimation();
-            assert (value > 2.9999) && (3.0001 > value) : "test failed: space is 3210321001230123, target is 0123, return value must be 3.0. but return value is " + value + ".";
-	    
-	    // Test case 9: valid case
-            myObject = new InformationEstimator();
-	    myObject.setSpace("3210321001230123".getBytes());
-	    myObject.setTarget("00".getBytes());
-            value = myObject.estimation();
-            assert (value > 3.9999) && (4.0001 > value) : "test failed: space is 3210321001230123, target is 00, return value must be 4.0. but return value is " + value + ".";
+	    estimator_valid_case_test("3210321001230123", "0");
+	    estimator_valid_case_test("3210321001230123", "01");
+	    estimator_valid_case_test("3210321001230123", "0123");
+	    estimator_valid_case_test("3210321001230123", "00");
+	    String random_stuff500 = "OnceuponatimetherewasanoldSowwiththreelittlePigs,andasshehadnotenoughtokeepthem,shesentthemouttoseektheirfortune.shesentthemouttoseektheirfortunetheoldsowManwithabundleofstrawThefirstthatwentoffmetaManwithabundleofstraw,andsaidtohim,\"Please,Man,givemethatstrawtobuildmeahouse\";whichtheMandid,andthelittlePigbuiltahousewithit.PresentlycamealongaWolf,andknockedatthedoor,andsaid,\"LittlePig,littlePig,letmecomein.\"TowhichthePiganswered,\"No,no,bythehairofmychinnychinchin.\"\"ThenI'llhuffandI'llpuff,andI'";
+	    estimator_valid_case_test(random_stuff500, "he");
+	    estimator_valid_case_test(random_stuff500, "Pig");
+	    estimator_valid_case_test(random_stuff500, "and");
+	    estimator_valid_case_test(random_stuff500, "little");
+	    /*
+	    String random_stuff5000 = "DorothylivedinthemidstofthegreatKansasprairies,withUncleHenry,whowasafarmer,andAuntEm,whowasthefarmer'swife.Theirhousewassmall,forthelumbertobuildithadtobecarriedbywagonmanymiles.Therewerefourwalls,afloorandaroof,whichmadeoneroom;andthisroomcontainedarustylookingcookstove,acupboardforthedishes,atable,threeorfourchairs,andthebeds.UncleHenryandAuntEmhadabigbedinonecorner,andDorothyalittlebedinanothercorner.Therewasnogarretatall,andnocellar-exceptasmallholedugintheground,calledacyclonecellar,wherethefamilycouldgoincaseoneofthosegreatwhirlwindsarose,mightyenoughtocrushanybuildinginitspath.Itwasreachedbyatrapdoorinthemiddleofthefloor,fromwhichaladderleddownintothesmall,darkhole.WhenDorothystoodinthedoorwayandlookedaround,shecouldseenothingbutthegreatgrayprairieoneveryside.Notatreenorahousebrokethebroadsweepofflatcountrythatreachedtotheedgeoftheskyinalldirections.Thesunhadbakedtheplowedlandintoagraymass,withlittlecracksrunningthroughit.Eventhegrasswasnotgreen,forthesunhadburnedthetopsofthelongbladesuntiltheywerethesamegraycolortobeseeneverywhere.Oncethehousehadbeenpainted,butthesunblisteredthepaintandtherainswasheditaway,andnowthehousewasasdullandgrayaseverythingelse.WhenAuntEmcametheretoliveshewasayoung,prettywife.Thesunandwindhadchangedher,too.Theyhadtakenthesparklefromhereyesandleftthemasobergray;theyhadtakentheredfromhercheeksandlips,andtheyweregrayalso.Shewasthinandgaunt,andneversmilednow.WhenDorothy,whowasanorphan,firstcametoher,AuntEmhadbeensostartledbythechild'slaughterthatshewouldscreamandpressherhanduponherheartwheneverDorothy'smerryvoicereachedherears;andshestilllookedatthelittlegirlwithwonderthatshecouldfindanythingtolaughat.UncleHenryneverlaughed.Heworkedhardfrommorningtillnightanddidnotknowwhatjoywas.Hewasgrayalso,fromhislongbeardtohisroughboots,andhelookedsternandsolemn,andrarelyspoke.ItwasTotothatmadeDorothylaugh,andsavedherfromgrowingasgrayasherothersurroundings.Totowasnotgray;hewasalittleblackdog,withlongsilkyhairandsmallblackeyesthattwinkledmerrilyoneithersideofhisfunny,weenose.Totoplayedalldaylong,andDorothyplayedwithhim,andlovedhimdearly.Today,however,theywerenotplaying.UncleHenrysatuponthedoorstepandlookedanxiouslyatthesky,whichwasevengrayerthanusual.DorothystoodinthedoorwithTotoinherarms,andlookedattheskytoo.AuntEmwaswashingthedishes.Fromthefarnorththeyheardalowwailofthewind,andUncleHenryandDorothycouldseewherethelonggrassbowedinwavesbeforethecomingstorm.Therenowcameasharpwhistlingintheairfromthesouth,andastheyturnedtheireyesthatwaytheysawripplesinthegrasscomingfromthatdirectionalso.SuddenlyUncleHenrystoodup.\"There'sacyclonecoming,Em,\"hecalledtohiswife.\"I'llgolookafterthestock.\"Thenherantowardtheshedswherethecowsandhorseswerekept.AuntEmdroppedherworkandcametothedoor.Oneglancetoldherofthedangercloseathand.\"Quick,Dorothy!\"shescreamed.\"Runforthecellar!\"TotojumpedoutofDorothy'sarmsandhidunderthebed,andthegirlstartedtogethim.AuntEm,badlyfrightened,threwopenthetrapdoorinthefloorandclimbeddowntheladderintothesmall,darkhole.DorothycaughtTotoatlastandstartedtofollowheraunt.Whenshewashalfwayacrosstheroomtherecameagreatshriekfromthewind,andthehouseshooksohardthatshelostherfootingandsatdownsuddenlyuponthefloor.Thenastrangethinghappened.Thehousewhirledaroundtwoorthreetimesandroseslowlythroughtheair.Dorothyfeltasifsheweregoingupinaballoon.Thenorthandsouthwindsmetwherethehousestood,andmadeittheexactcenterofthecyclone.Inthemiddleofacyclonetheairisgenerallystill,butthegreatpressureofthewindoneverysideofthehouseraisedituphigherandhigher,untilitwasattheverytopofthecyclone;andthereitremainedandwascarriedmilesandmilesawayaseasilyasyoucouldcarryafeather.Itwasverydark,andthewindhowledhorriblyaroundher,butDorothyfoundshewasridingquiteeasily.Afterthefirstfewwhirlsaround,andoneothertimewhenthehousetippedbadly,shefeltasifshewerebeingrockedgently,likeababyinacradle.Totodidnotlikeit.Heranabouttheroom,nowhere,nowthere,barkingloudly;butDorothysatquitestillonthefloorandwaitedtoseewhatwouldhappen.OnceTotogottooneartheopentrapdoor,andfellin;andatfirstthelittlegirlthoughtshehadlosthim.Butsoonshesawoneofhisearsstickingupthroughthehole,forthestrongpressureoftheairwaskeepinghimupsothathecouldnotfall.Shecrepttothehole,caughtTotobytheear,anddraggedhimintotheroomagain,afterwardclosingthetrapdoorsothatnomoreaccidentscouldhappen.Hourafterhourpassedaway,andslowlyDorothygotoverherfright;butshefeltquitelonely,andthewindshriekedsoloudlyallaboutherthatshenearlybecamedeaf.Atfirstshehadwonderedifshewouldbedashedtopieceswhenthehousefellagain;butasthehourspassedandnothingterriblehappened,shestoppedworryingandresolvedtowaitcalmlyandseewhatthefuturewouldbring.Atlastshecrawledovertheswayingfloortoherbed,andlaydownuponit;andTotofollowedandlaydownbesideher.Inspiteoftheswayingofthehouseandthewailingofthewind,Dorothysoonclosedhereyesandfellfastasleep.Shewasawakenedbyashock,sosuddenandseverethatifDorothyhadnotbeenlyingonthesoftbedshemighthavebeenhurt.Asitwas,thejarmadehercatchherbreathandwonderwhathadhappened;andTotoputhiscoldlittlenoseintoherfacean";
+	    estimator_valid_case_test(random_stuff5000, "at");
+	    estimator_valid_case_test(random_stuff5000, "that");
+	    estimator_valid_case_test(random_stuff5000, "wherethe");
+	    estimator_valid_case_test(random_stuff5000, "herethecowsandhorseswerekept");
+	    */
 	}
 	catch(Exception e) {
 	    System.out.println("Exception occurred in InformationEstimator Object");

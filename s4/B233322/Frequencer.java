@@ -109,7 +109,11 @@ public class Frequencer implements FrequencerInterface{
     }
 	    
     private void quickSortSuffixArray(int left, int right) {
-	if (right-left <= 2) { simpleSortSuffixArray(left, right); return; }
+	if (right-left <= 2)
+	{
+	    if (suffixCompare(this.suffixArray[left], this.suffixArray[left + 1]) == 1) { swapSuffixArray(i, j); }
+	    return;
+	}
 	//pivotを一番左に持ってくる
 	swapSuffixArray(left, rand.nextInt(right - left) + left);
 	

@@ -114,7 +114,7 @@ public class Frequencer implements FrequencerInterface{
 	int k = left;
 	while (true)
 	{
-	    if (suffixCompare(this.suffixArray[left], this.suffixArray[left + 1]) == 1)
+	    if (suffixCompare(this.suffixArray[i], this.suffixArray[j]) == 1)
 	    {
 		this.tempArray[k] = this.suffixArray[j];
 	        ++k;

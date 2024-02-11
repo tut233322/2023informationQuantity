@@ -127,6 +127,7 @@ public class Frequencer implements FrequencerInterface{
 	    }
 	}
 	swapSuffixArray(left, i);
+	if (i - left < right - i) { ++i; }
 	if (i - left > 1) { quickSortSuffixArray(left, i); }
 	if (right - i > 1) { quickSortSuffixArray(i, right); }
 	
